@@ -1,0 +1,4 @@
+export OS_DBUSER='root'
+export OS_DBPASS=''
+export OS_DBHOST='localhost'
+
