@@ -2,3 +2,9 @@ export OS_DBUSER='root'
 export OS_DBPASS=''
 export OS_DBHOST='localhost'
 
+export OS_SERVICE_TOKEN='admintoken'
+export OS_SERVICE_ENDPOINT=http://localhost:35357/v2.0
+export OS_ADMIN_PASS='adminpass'
+export OS_ADMIN_EMAIL='admin@hoge.com'
+
+export OS_CTL_HOST='localhost'
