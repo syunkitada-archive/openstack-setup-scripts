@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 source ./openstackrc
 
@@ -26,7 +26,7 @@ sudo chkconfig openstack-keystone on
 
 # create admin user
 keystone role-create --name=admin
-keystone user-create --name=admin --pass=$OS_ADMIN_PASS --email=OS_ADMIN_EMAIL
+keystone user-create --name=admin --pass=$OS_ADMIN_PASS --email=$OS_ADMIN_EMAIL
 keystone tenant-create --name=admin --description="Admin Tenant"
 keystone user-role-add --user=admin --tenant=admin --role=admin
 keystone user-role-add --user=admin --tenant=admin --role=_member_
@@ -41,4 +41,4 @@ keystone endpoint-create \
     --internalurl=http://${OS_CTL_HOST}:5000/v2.0 \
     --adminurl=http://${OS_CTL_HOST}:35357/v2.0
 
-
+keystone tenant-create --name=service

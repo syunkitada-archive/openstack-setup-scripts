@@ -1,14 +1,15 @@
-#!/bin/sh
+#!/bin/sh -x
 
 #
 # common settings
 #
+set -e
 
 source ./openstackrc
 
 # install icehouse and epel repo
-sudo yum install http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/rdo-release-icehouse-3.noarch.rpm
-sudo yum install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm -y
+# sudo yum install http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/rdo-release-icehouse-3.noarch.rpm
+# sudo yum install http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm -y
 sudo yum install openstack-utils -y
 
 # install pip
@@ -40,10 +41,16 @@ else
     password_option=-p$OS_DBPASS
 fi
 mysql -u$OS_DBUSER $password_option -e '
-CREATE DATABASE keystone;
-CREATE DATABASE neutron;
-CREATE DATABASE nova;
-CREATE DATABASE cinder;
-CREATE DATABASE horizon;
-CREATE DATABASE glance;
+DROP DATABASE keystone;
+DROP DATABASE neutron;
+DROP DATABASE nova;
+DROP DATABASE cinder;
+DROP DATABASE horizon;
+DROP DATABASE glance;
+CREATE DATABASE keystone DEFAULT CHARACTER SET utf8;
+CREATE DATABASE neutron DEFAULT CHARACTER SET utf8;
+CREATE DATABASE nova DEFAULT CHARACTER SET utf8;
+CREATE DATABASE cinder DEFAULT CHARACTER SET utf8;
+CREATE DATABASE horizon DEFAULT CHARACTER SET utf8;
+CREATE DATABASE glance DEFAULT CHARACTER SET utf8;
 '
