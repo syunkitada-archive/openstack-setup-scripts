@@ -41,4 +41,4 @@ keystone endpoint-create \
     --internalurl=http://${OS_CTL_HOST}:5000/v2.0 \
     --adminurl=http://${OS_CTL_HOST}:35357/v2.0
 
-keystone tenant-create --name=service
+keystone tenant-create --name=service --description="Service Tenant"

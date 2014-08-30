@@ -48,14 +48,14 @@ keystone endpoint-create \
     --service-id=$(keystone service-list | awk '/ volume / {print $2}') \
     --publicurl=http://$OS_CTL_HOST:8776/v1/%\(tenant_id\)s \
     --internalurl=http://$OS_CTL_HOST:8776/v1/%\(tenant_id\)s \
-    --adminurl=http://$OS_CT_HOST:8776/v1/%\(tenant_id\)s
+    --adminurl=http://$OS_CTL_HOST:8776/v1/%\(tenant_id\)s
 
 keystone service-create --name=cinderv2 --type=volumev2 --description="OpenStack Block Storage v2"
 keystone endpoint-create \
     --service-id=$(keystone service-list | awk '/ volumev2 / {print $2}') \
     --publicurl=http://$OS_CTL_HOST:8776/v2/%\(tenant_id\)s \
     --internalurl=http://$OS_CTL_HOST:8776/v2/%\(tenant_id\)s \
-    --adminurl=http://$OS_CT_HOST:8776/v2/%\(tenant_id\)s
+    --adminurl=http://$OS_CTL_HOST:8776/v2/%\(tenant_id\)s
 
 
 sudo service openstack-cinder-api start
